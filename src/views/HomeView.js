@@ -3,10 +3,9 @@ import Showcase from '../components/Showcase'
 import FooterSection from '../sections/FooterSection'
 import MainMenuSection from '../sections/MainMenuSection'
 import ProductGridSection from '../sections/ProductGridSection'
-import Adertisement from '../sections/MittenSection'
 import ServicesSection from '../sections/servicesSection'
-import { ProductsContext } from './contexts/contexts';
-
+import { ProductsContext } from '../context'
+import Advertisement from '../sections/Advertisement'
 
 // const props = {
 // text : 'hej',
@@ -17,7 +16,7 @@ import { ProductsContext } from './contexts/contexts';
 // const { featuredProducts, topProducts } = props
 
 const HomeView = () => {
-  const productsContext = useContext(ProductsContext)
+  const productsContext = useContext(ProductsContext);
 
   window.top.document.title = 'Fixxo.'
 
@@ -25,13 +24,13 @@ const HomeView = () => {
     <>
 
       <MainMenuSection />
-        <Showcase />
-        <ProductGridSection title="Featured Products" product={productsContext.featuredProducts}/>
-        <ProductGridSection title="Top Products"/>
-        <Adertisement />
-        <ServicesSection/>
-
-        <FooterSection />
+      <Showcase />
+      <ProductGridSection title="Featured Products" products={productsContext.featuredProducts} />
+      <ProductGridSection title="Top Products" />
+      <Advertisement />
+      {/* <MittenSection /> */}
+      <ServicesSection />
+      <FooterSection />
 
       {/* </div> */}
     </>

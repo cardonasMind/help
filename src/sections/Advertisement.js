@@ -33,19 +33,19 @@ const Advertisement = ({ products }) => {
                     </div>
                 </div>
             </Grid>
-            <Grid items xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <div className='advertisement-section2'>
                     <h3>2 for USD $29</h3>
                     <Button variant='contained'>SALE</Button>
                 </div>
             </Grid>
-            <Grid items xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <Grid container spacing={0} sx={{ justifyContent: 'center' }}>
                     <section className="product-grid">
                         <div className="container">
                             <div className="row row-cols-1 row-cols-md-4 g-4">
                                 {
-                                    products.map((product) => {
+                                    products && products.map((product) => {
                                         return (
                                             <Grid items sm={6}>
                                                 <ProductCard key={product.id} product={product} />
@@ -59,13 +59,13 @@ const Advertisement = ({ products }) => {
                 </Grid>
 
             </Grid>
-            <Grid items xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <Grid container spacing={0} className='product-grid-mainGrid'>
                     <section className="product-grid">
                         <div className="container">
                             <div className="row row-cols-1 row-cols-md-4 g-4">
                                 {
-                                    products.map((product) => {
+                                    products && products.map((product) => {
                                         return (
                                             <Grid items sm={6}>
                                                 <ProductCard key={product.id} product={product} />
@@ -78,7 +78,7 @@ const Advertisement = ({ products }) => {
                     </section>
                 </Grid>
             </Grid>
-            <Grid items xs={12} md={6}>
+            <Grid item xs={12} md={6}>
                 <div className='advertisement-section2'>
                     <h3>2 for USD $29</h3>
                     <Button variant='contained'>SALE</Button>
