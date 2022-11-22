@@ -2,7 +2,7 @@ import React from 'react';
 import ProductCard from '../components/ProductCard'
 import { Grid } from '@mui/material'
 
-const ProductGridSection = ({ title, products = [] }) => {
+const ProductGridSection = ({ title, products = [], advertisementStyle }) => {
   return (
     <section className="product-grid">
       <div className="container">
@@ -11,9 +11,14 @@ const ProductGridSection = ({ title, products = [] }) => {
           {
             products == [] ? "Loading..." : products.map((product) => {
               return (
-                <Grid key={product.articleNumber} item xs={12} sm={6} md={3}>
-                  <ProductCard product={product} />
-                </Grid>
+                advertisementStyle 
+                  ? <Grid key={product.articleNumber} item xs={12} sm={6} md={6}>
+                    <ProductCard product={product} />
+                  </Grid>
+
+                  : <Grid key={product.articleNumber} item xs={12} sm={6} md={3}>
+                    <ProductCard product={product} />
+                  </Grid>
               )
             })
           }

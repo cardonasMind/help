@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Grid } from '@mui/material'
 import image1 from '../assets/images/image1.PNG'
 import image2 from '../assets/images/image2.PNG'
 import { Button } from '@mui/material'
 import ProductGridSection from './ProductGridSection'
-import ProductCard from '../components/ProductCard'
-import { Divider } from '@mui/material'
 
-const Advertisement = ({ products }) => {
-    console.log('featuredProducts', products)
+import { ProductsContext } from '../context'
+
+const Advertisement = () => {
+    const productsContext = useContext(ProductsContext);
+
+    const first4products = productsContext.featuredProducts.slice(0, 4);
+    const last4products = productsContext.featuredProducts.slice(4, 8);
+
     return (
         <Grid container spacing={2} className='advertisement-section-Grid'>
             <Grid item xs={12} md={6}>
@@ -39,53 +43,21 @@ const Advertisement = ({ products }) => {
                     <Button variant='contained'>SALE</Button>
                 </div>
             </Grid>
-            <Grid item xs={12} md={6}>
-                <Grid container spacing={0} sx={{ justifyContent: 'center' }}>
-                    <section className="product-grid">
-                        <div className="container">
-                            <div className="row row-cols-1 row-cols-md-4 g-4">
-                                {
-                                    products && products.map((product) => {
-                                        return (
-                                            <Grid items sm={6}>
-                                                <ProductCard key={product.id} product={product} />
-                                            </Grid>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </section>
-                </Grid>
 
-            </Grid>
             <Grid item xs={12} md={6}>
-                <Grid container spacing={0} className='product-grid-mainGrid'>
-                    <section className="product-grid">
-                        <div className="container">
-                            <div className="row row-cols-1 row-cols-md-4 g-4">
-                                {
-                                    products && products.map((product) => {
-                                        return (
-                                            <Grid items sm={6}>
-                                                <ProductCard key={product.id} product={product} />
-                                            </Grid>
-                                        )
-                                    })
-                                }
-                            </div>
-                        </div>
-                    </section>
-                </Grid>
+                <ProductGridSection products={first4products} advertisementStyle />
             </Grid>
+
+            <Grid item xs={12} md={6}>
+                <ProductGridSection products={last4products} advertisementStyle />
+            </Grid>
+
             <Grid item xs={12} md={6}>
                 <div className='advertisement-section2'>
                     <h3>2 for USD $29</h3>
                     <Button variant='contained'>SALE</Button>
                 </div>
             </Grid>
-            <Divider />
-
         </Grid>
 
     )
